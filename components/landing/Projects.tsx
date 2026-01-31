@@ -1,95 +1,127 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { Card } from "./Card"
-import { Modal } from "./Modal"
+import { useEffect, useRef, useState } from "react";
+import { Card } from "./Card";
+import { Modal } from "./Modal";
 
 const projects = [
   {
     id: 1,
     title: "Cosmo Beauty Brand",
-    description: "Kosmetika brendi uchun to'liq brending va Instagram strategiyasi",
+    description:
+      "Kosmetika brendi uchun to'liq brending va Instagram strategiyasi",
     category: "Brending",
-    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80",
     fullDescription:
       "Cosmo Beauty brendi uchun to'liq visual identity yaratdim: logo dizayni, rang palitrasi, shrift tanlovi va barcha marketing materiallari. Instagram uchun 3 oylik kontent strategiyasi ishlab chiqildi va auditoriya 300% ga oshdi.",
-    results: ["Logo va brending", "Instagram strategiya", "300% o'sish", "50+ post dizayn"],
+    results: [
+      "Logo va brending",
+      "Instagram strategiya",
+      "300% o'sish",
+      "50+ post dizayn",
+    ],
   },
   {
     id: 2,
     title: "Urban Cafe Rebrand",
     description: "Zamonaviy kofe uchun yangi vizual identifikatsiya",
     category: "Logo Dizayn",
-    image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80",
     fullDescription:
       "Urban Cafe uchun to'liq rebrand loyihasi. Yangi logo, menyu dizayni, ichki bezak konsepti va social media presence yaratildi. Mijozlar oqimi 40% ga oshdi.",
-    results: ["Logo rebrand", "Menyu dizayn", "40% mijoz o'sishi", "Social media kit"],
+    results: [
+      "Logo rebrand",
+      "Menyu dizayn",
+      "40% mijoz o'sishi",
+      "Social media kit",
+    ],
   },
   {
     id: 3,
     title: "FitLife App",
     description: "Fitness ilovasi uchun UI/UX dizayn va brending",
     category: "UI/UX",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
+    image:
+      "https://d2567ph5zp6ttk.cloudfront.net/public/blog_posts/0001/12/f2fc393375db6bd9302661644183dd6b78e6a291.jpeg?d=1200x630",
     fullDescription:
       "FitLife fitness ilovasi uchun to'liq UI/UX dizayn. User research, wireframing, prototyping va final dizayn. App Store'da 4.8 reyting oldi.",
-    results: ["UI/UX dizayn", "Prototyping", "4.8 App Store reyting", "50K+ yuklab olish"],
+    results: [
+      "UI/UX dizayn",
+      "Prototyping",
+      "4.8 App Store reyting",
+      "50K+ yuklab olish",
+    ],
   },
   {
     id: 4,
     title: "Fashion Week Campaign",
     description: "Mahalliy fashion haftaligi uchun marketing kampaniyasi",
     category: "SMM",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
     fullDescription:
       "Fashion Week Tashkent uchun to'liq digital marketing kampaniyasi. Instagram, Telegram va boshqa platformalarda kontent yaratish va targetlangan reklama.",
-    results: ["1M+ reach", "50K engagement", "Sold out event", "Press coverage"],
+    results: [
+      "1M+ reach",
+      "50K engagement",
+      "Sold out event",
+      "Press coverage",
+    ],
   },
   {
     id: 5,
     title: "EcoStore Branding",
     description: "Ekologik do'kon uchun barqaror brending",
     category: "Brending",
-    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80",
     fullDescription:
       "EcoStore uchun environmentally conscious brending. Recycled materiallardan packaging dizayni va sustainable marketing strategiyasi.",
-    results: ["Eco-friendly dizayn", "Packaging", "Brand guidelines", "Marketing kit"],
+    results: [
+      "Eco-friendly dizayn",
+      "Packaging",
+      "Brand guidelines",
+      "Marketing kit",
+    ],
   },
   {
     id: 6,
     title: "Tech Startup Launch",
     description: "Texnologiya startapi uchun launch kampaniyasi",
     category: "Marketing",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
     fullDescription:
       "SaaS startapi uchun product launch kampaniyasi. Landing page dizayn, email marketing va social media strategiyasi.",
     results: ["Landing page", "Email funnel", "500+ signups", "PR coverage"],
   },
-]
+];
 
 interface Project {
-  id: number
-  title: string
-  description: string
-  category: string
-  image: string
-  fullDescription: string
-  results: string[]
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  image: string;
+  fullDescription: string;
+  results: string[];
 }
 
 export function Projects() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const sectionRef = useRef<HTMLElement>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const loadAnimations = async () => {
-      const gsap = (await import("gsap")).default
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger")
+      const gsap = (await import("gsap")).default;
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
 
-      gsap.registerPlugin(ScrollTrigger)
+      gsap.registerPlugin(ScrollTrigger);
 
-      const section = sectionRef.current
-      if (!section) return
+      const section = sectionRef.current;
+      if (!section) return;
 
       gsap.fromTo(
         section.querySelectorAll(".section-header"),
@@ -105,12 +137,12 @@ export function Projects() {
             start: "top 80%",
             toggleActions: "play none none reverse",
           },
-        }
-      )
-    }
+        },
+      );
+    };
 
-    loadAnimations()
-  }, [])
+    loadAnimations();
+  }, []);
 
   return (
     <section
@@ -217,5 +249,5 @@ export function Projects() {
         )}
       </Modal>
     </section>
-  )
+  );
 }
