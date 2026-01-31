@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     "social media marketing",
     "visual identity",
   ],
-  authors: [{ name: "Creative Studio" }],
+  authors: [{ name: "N ACADEMY" }],
   openGraph: {
-    title: "Creative Studio | Graphic Design & SMM Expert",
+    title: "N ACADEMY | Graphic Design & SMM Expert",
     description:
       "Transform your brand with stunning visuals and strategic social media marketing.",
     type: "website",
