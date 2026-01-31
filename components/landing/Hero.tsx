@@ -73,21 +73,21 @@ export function Hero() {
 
         {/* Main Title */}
         <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground max-w-5xl mx-auto leading-[1.1]">
-          <span className="block">Instagramda Rivojlanish</span>
+          <span className="block">Zamonaviy IT </span>
           <span className="block mt-2">
             <span className="text-[#0A1A2F]">Va</span>{" "}
             <span className="bg-gradient-to-r from-[#0A1A2F] to-[#0A1A2F]/70 bg-clip-text text-transparent">
-              Visual Brending
+              Kreativ Dizayn -
             </span>
           </span>
-          <span className="block text-muted-foreground mt-2">Expert</span>
+          <span className="block text-muted-foreground mt-2">Media</span>
         </h1>
 
         {/* Subtitle */}
         <p className="hero-subtitle mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          Professional grafik dizayner va SMM mutaxassisi sifatida brendingizni
-          yangi bosqichga olib chiqaman. Zamonaviy dizayn va strategik
-          yondashuv.
+          Zamonaviy kasblar – IT, dizayn va sun’iy intellekt yo‘nalishida
+          professional mentorlar bilan amaliy ta’lim orqali kelajak
+          mutaxassislarini shakllantiramiz.
         </p>
 
         {/* CTA Buttons */}

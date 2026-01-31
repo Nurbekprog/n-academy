@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "N ACADEMY | Graphic Design & SMM Expert",
+  title: "N ACADEMY | Graphic Design & IT & SMM Expert",
   description:
-    "Professional graphic designer and Instagram growth specialist. Transform your brand with stunning visuals and strategic social media marketing.",
+    "Academy IT and Graphic Design sohasida zamonaviy ta'lim beradi.",
   keywords: [
     "graphic design",
     "SMM",
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "N ACADEMY" }],
   openGraph: {
-    title: "N ACADEMY | Graphic Design & SMM Expert",
+    title: "N ACADEMY | Graphic Design & IT & SMM Expert",
     description:
-      "Transform your brand with stunning visuals and strategic social media marketing.",
+      "Academy IT and Graphic Design sohasida zamonaviy ta'lim beradi.",
     type: "website",
   },
-  generator: "v0.app",
+  generator: "Next.js",
 };
 
 export const viewport: Viewport = {

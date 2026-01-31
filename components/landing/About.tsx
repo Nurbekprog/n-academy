@@ -55,6 +55,26 @@ const skills = [
         strokeLinecap="round"
         strokeLinejoin="round"
       >
+        <polyline points="16 18 22 12 16 6"></polyline>
+        <polyline points="8 6 2 12 8 18"></polyline>
+        <line x1="15" y1="2" x2="10" y2="22"></line>
+      </svg>
+    ),
+    title: "IT Yonalishlari",
+    description: "Dasturlash va web rivojlantirish",
+  },
+  {
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M12 20h9" />
         <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
       </svg>
@@ -146,24 +166,22 @@ export function About() {
           {/* Left Column - Text */}
           <div>
             <span className="about-animate inline-block text-sm font-semibold text-[#0A1A2F] tracking-wider uppercase mb-4">
-              Men haqimda
+              Biz haqimizda
             </span>
             <h2 className="about-animate text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-              Kreativ yechimlar orqali{" "}
-              <span className="text-[#0A1A2F]">brendingizni</span>{" "}
-              rivojlantiraman
+              IT va ta{"'"}lim{" "}
+              <span className="text-[#0A1A2F]">zamonaviy usulda.</span> Noldan
+              professionalgacha.
             </h2>
             <p className="about-animate mt-6 text-lg text-muted-foreground leading-relaxed">
-              5 yildan ortiq tajribaga ega professional grafik dizayner va SMM
-              mutaxassisiman. Mijozlarimning brendlarini zamonaviy dizayn va
-              samarali marketing strategiyalari orqali rivojlantirishga yordam
-              beraman.
+              N ACADEMY — IT, dizayn, media va sun{"'"}iy intellekt yo{"'"}
+              nalishlarida amaliy ta{"'"}lim beruvchi zamonaviy markaz. 5+
+              yillik tajribaga ega mentorlar real loyihalar orqali o{"'"}
+              quvchilarni noldan professionalgacha yetaklaydi.
             </p>
             <p className="about-animate mt-4 text-lg text-muted-foreground leading-relaxed">
-              Instagram platformasida 50,000 dan ortiq auditoriya yig'ishga
-              erishdim va 500 dan ortiq o'quvchilarga online kurslarim orqali
-              bilim berdim. Sizning brendingiz ham mening loyiham bo'lishi
-              mumkin.
+              Instagramda 50,000+ auditoriya va 500+ o{"'"}quvchi bilan bizning
+              loyihamizda sizning brendingiz ham o{"'"}sishi mumkin.
             </p>
 
             {/* CTA */}
