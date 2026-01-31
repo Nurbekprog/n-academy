@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 const socialLinks = [
   {
     name: "Instagram",
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/nurmetovvv_/",
     icon: (
       <svg
         width="20"
@@ -27,7 +27,7 @@ const socialLinks = [
   },
   {
     name: "Telegram",
-    href: "https://t.me",
+    href: "https://t.me/nurmuhammadn",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.06-.06-.15-.04-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
@@ -36,7 +36,7 @@ const socialLinks = [
   },
   {
     name: "YouTube",
-    href: "https://youtube.com",
+    href: "https://www.youtube.com/@exayss",
     icon: (
       <svg
         width="20"
@@ -169,7 +169,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="footer-animate">
                 <a
-                  href="tel:+998901234567"
+                  href="tel:+998948425001"
                   className="text-white/60 hover:text-white transition-colors flex items-center gap-2"
                 >
                   <svg
@@ -184,12 +184,12 @@ export function Footer() {
                   >
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
-                  +998 90 123 45 67
+                  +998 94 842 50 01
                 </a>
               </li>
               <li className="footer-animate">
                 <a
-                  href="mailto:hello@studio.uz"
+                  href="mailto:nurmuhammad@studio.uz"
                   className="text-white/60 hover:text-white transition-colors flex items-center gap-2"
                 >
                   <svg
@@ -205,7 +205,7 @@ export function Footer() {
                     <rect width="20" height="16" x="2" y="4" rx="2" />
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
-                  hello@studio.uz
+                  nurmuhammad@studio.uz
                 </a>
               </li>
               <li className="footer-animate">
@@ -233,7 +233,8 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="footer-animate mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} Studio. Barcha huquqlar himoyalangan.
+            © {new Date().getFullYear()} N ACADEMY. Barcha huquqlar
+            himoyalangan.
           </p>
           <p className="text-white/40 text-sm">Made with passion in Tashkent</p>
         </div>
