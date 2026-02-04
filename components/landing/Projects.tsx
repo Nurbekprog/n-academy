@@ -153,7 +153,7 @@ export function Projects() {
       <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
+        {/* Header.  ------- */}
         <div className="text-center mb-16">
           <span className="section-header inline-block text-sm font-semibold text-[#0A1A2F] tracking-wider uppercase mb-4">
             Portfolio
