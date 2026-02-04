@@ -4,10 +4,48 @@ import React from "react";
 
 import { useEffect, useRef, useState } from "react";
 import { Modal } from "./Modal";
+import { features } from "process";
 
 const courses = [
   {
     id: 1,
+    title: "IT dasturlash asoslari",
+    description: "Dasturlashning asosiy tushunchalari va tillarini o'rganing",
+    price: "1,200,000",
+    duration: "8 hafta",
+    lessons: 32,
+    students: 150,
+    level: "Boshlang'ich",
+    icon: (
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+        <path d="M8 21h8" />
+        <path d="M12 17v4" />
+      </svg>
+    ),
+    fullDescription:
+      "Dasturlash asoslarini o'rganish uchun ideal kurs. HTML, CSS, JavaScript va Python kabi tillarning asosiy tushunchalari bilan tanishasiz. Amaliy loyihalar orqali o'z ko'nikmalaringizni mustahkamlang va IT sohasida boshlang'ich darajadagi bilimlarga ega bo'ling.",
+    modules: [
+      "Dasturlashga kirish",
+      "HTML va CSS asoslari",
+      "JavaScript dasturlash",
+      "Python dasturlash",
+      "Loyihalar bilan ishlash",
+      "Versiya nazorati (Git)",
+    ],
+    features: ["32 video dars", "Amaliy loyihalar", "Guruh chat", "Sertifikat"],
+  },
+  {
+    id: 2,
     title: "Instagram SMM Professional",
     description:
       "Instagram'da professional darajada marketing qilishni o'rganing",
@@ -50,7 +88,7 @@ const courses = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "Personal Branding Mastery",
     description:
       "Shaxsiy brendingizni noldan professional darajaga olib chiqing",
@@ -92,7 +130,7 @@ const courses = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "Grafik Dizayn Fundamentals",
     description: "Canva va boshqa toollar orqali professional dizayn yaratish",
     price: "1,200,000",
@@ -130,6 +168,89 @@ const courses = [
       "20 video dars",
       "Templates to'plami",
       "Amaliy mashqlar",
+      "Sertifikat",
+    ],
+  },
+  {
+    id: 5,
+    title: "Full Stack Web Development",
+    description: "Frontend va backend dasturlashni birlashtiring",
+    price: "3,500,000",
+    duration: "12 hafta",
+    lessons: 48,
+    students: 98,
+    level: "Professional",
+    icon: (
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M16 18a4 4 0 0 0 0-8h-1.26a4 4 0 0 1-7.48 0H6a4 4 0 0 0 0 8h10z" />
+        <line x1="12" x2="12" y1="14" y2="22" />
+        <line x1="8" x2="16" y1="18" y2="18" />
+      </svg>
+    ),
+    fullDescription:
+      "To'liq stack web dasturlashni o'rganing: HTML, CSS, JavaScript, React, Node.js va ma'lumotlar bazalari. Frontend va backendni birlashtirib, to'liq funksional veb-ilovalar yaratishni o'rganasiz.",
+    modules: [
+      "Frontend asoslari",
+      "React bilan ishlash",
+      "Backend dasturlash (Node.js)",
+      "Ma'lumotlar bazalari (MongoDB)",
+      "API yaratish",
+      "Loyihalar bilan ishlash",
+    ],
+    features: [
+      "48 video dars",
+      "Amaliy loyihalar",
+      "1-on-1 mentorlik",
+      "Sertifikat",
+    ],
+  },
+  {
+    id: 6,
+    title: "Mobil Ilova Dasturlash",
+    description: "iOS va Android uchun ilovalar yaratish",
+    price: "3,000,000",
+    duration: "10 hafta",
+    lessons: 40,
+    students: 120,
+    level: "Professional",
+    icon: (
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="7" y="2" width="10" height="20" rx="2" ry="2" />
+        <line x1="12" x2="12" y1="18" y2="18" />
+      </svg>
+    ),
+    fullDescription:
+      "iOS va Android platformalari uchun mobil ilovalar yaratishni o'rganing. React Native va boshqa zamonaviy toollar yordamida cross-platform ilovalar ishlab chiqishni o'zlashtirasiz.",
+    modules: [
+      "Mobil dasturlashga kirish",
+      "React Native asoslari",
+      "UI/UX dizayn mobil uchun",
+      "API integratsiyasi",
+      "Ilova optimallashtirish",
+      "Loyihalar bilan ishlash",
+    ],
+    features: [
+      "40 video dars",
+      "Amaliy loyihalar",
+      "1-on-1 mentorlik",
       "Sertifikat",
     ],
   },

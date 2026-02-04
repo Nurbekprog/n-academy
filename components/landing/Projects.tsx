@@ -7,19 +7,19 @@ import { Modal } from "./Modal";
 const projects = [
   {
     id: 1,
-    title: "Cosmo Beauty Brand",
+    title: "Nexcent ",
     description:
-      "Kosmetika brendi uchun to'liq brending va Instagram strategiyasi",
-    category: "Brending",
+      "Figma dizaynerlari jamoasi uchun veb-sayt va brending yaratish",
+    category: "Landing page",
     image:
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80",
+      "https://s3-figma-hubfile-images-production.figma.com/hub/file/carousel/img/98ecb4507f2ca027a972216016de2a67543fca79",
     fullDescription:
-      "Cosmo Beauty brendi uchun to'liq visual identity yaratdim: logo dizayni, rang palitrasi, shrift tanlovi va barcha marketing materiallari. Instagram uchun 3 oylik kontent strategiyasi ishlab chiqildi va auditoriya 300% ga oshdi.",
+      "Nexcent uchun to'liq brending va veb-sayt dizayni. Logo, rang palitrasi, tipografiya va marketing materiallari yaratildi. Sayt foydalanuvchi tajribasini yaxshilash uchun optimallashtirildi va 300% trafik o'sishi kuzatildi.",
     results: [
-      "Logo va brending",
-      "Instagram strategiya",
-      "300% o'sish",
-      "50+ post dizayn",
+      "Brending to'plami",
+      "Veb-sayt dizayni",
+      "300% trafik o'sishi",
+      "SEO optimallashtirish",
     ],
   },
   {
