@@ -73,7 +73,12 @@ export function Card({
       )}
 
       {/* Content */}
-      <div className={cn("p-6", image && "absolute bottom-0 left-0 right-0")}>
+      <div
+        className={cn(
+          "p-5 sm:p-6",
+          image && "absolute bottom-0 left-0 right-0",
+        )}
+      >
         {category && (
           <span
             className={cn(

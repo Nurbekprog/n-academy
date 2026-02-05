@@ -59,20 +59,20 @@ export function Hero() {
     >
       {/* Gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white pointer-events-none" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0A1A2F]/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#0A1A2F]/3 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-[#0A1A2F]/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-56 h-56 sm:w-80 sm:h-80 bg-[#0A1A2F]/3 rounded-full blur-3xl" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Badge */}
-        <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mt-3 mb-8">
+        <div className="hero-badge inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-secondary border border-border mt-3 mb-8">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          <span className="text-sm font-medium text-muted-foreground">
+          <span className="text-xs sm:text-sm font-medium text-muted-foreground">
             Yangi kurslar mavjud
           </span>
         </div>
 
         {/* Main Title */}
-        <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground max-w-5xl mx-auto leading-[1.1]">
+        <h1 className="hero-title text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground max-w-5xl mx-auto leading-[1.1]">
           <span className="block">Zamonaviy IT </span>
           <span className="block mt-2">
             <span className="text-[#0A1A2F]">Va</span>{" "}
@@ -84,7 +84,7 @@ export function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="hero-subtitle mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+        <p className="hero-subtitle mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
           Zamonaviy kasblar – IT, dizayn va sun’iy intellekt yo‘nalishida
           professional mentorlar bilan amaliy ta’lim orqali kelajak
           mutaxassislarini shakllantiramiz.
@@ -95,7 +95,7 @@ export function Hero() {
           <button
             type="button"
             onClick={() => handleScroll("#courses")}
-            className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-[#0A1A2F] rounded-2xl hover:bg-[#0A1A2F]/90 transition-all duration-300 hover:shadow-2xl hover:shadow-[#0A1A2F]/20 hover:-translate-y-0.5"
+            className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-[#0A1A2F] rounded-2xl hover:bg-[#0A1A2F]/90 transition-all duration-300 hover:shadow-2xl hover:shadow-[#0A1A2F]/20 hover:-translate-y-0.5"
           >
             Kursga yozilish
             <svg
@@ -116,22 +116,22 @@ export function Hero() {
           <button
             type="button"
             onClick={() => handleScroll("#projects")}
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-foreground bg-white border border-border rounded-2xl hover:bg-secondary transition-all duration-300 hover:-translate-y-0.5"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-foreground bg-white border border-border rounded-2xl hover:bg-secondary transition-all duration-300 hover:-translate-y-0.5"
           >
             Loyihalarni ko'rish
           </button>
         </div>
 
         {/* Stats */}
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 mt-16">
+        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-16 mt-12 sm:mt-16">
           <div className="hero-stats text-center">
-            <div className="text-3xl md:text-4xl font-bold text-foreground">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
               150+
             </div>
             <div className="text-sm text-muted-foreground mt-1">Loyihalar</div>
           </div>
           <div className="hero-stats text-center">
-            <div className="text-3xl md:text-4xl font-bold text-foreground">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
               50K+
             </div>
             <div className="text-sm text-muted-foreground mt-1">
@@ -139,7 +139,7 @@ export function Hero() {
             </div>
           </div>
           <div className="hero-stats text-center">
-            <div className="text-3xl md:text-4xl font-bold text-foreground">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
               500+
             </div>
             <div className="text-sm text-muted-foreground mt-1">
@@ -147,7 +147,7 @@ export function Hero() {
             </div>
           </div>
           <div className="hero-stats text-center">
-            <div className="text-3xl md:text-4xl font-bold text-foreground">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
               5+
             </div>
             <div className="text-sm text-muted-foreground mt-1">
@@ -158,7 +158,7 @@ export function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <button
           type="button"
           onClick={() => handleScroll("#about")}

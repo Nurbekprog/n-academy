@@ -148,20 +148,20 @@ export function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative py-24 lg:py-32 dot-pattern"
+      className="relative py-20 sm:py-24 lg:py-32 dot-pattern"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header.  ------- */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <span className="section-header inline-block text-sm font-semibold text-[#0A1A2F] tracking-wider uppercase mb-4">
             Portfolio
           </span>
           <h2 className="section-header text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
             Tanlangan loyihalar
           </h2>
-          <p className="section-header mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-header mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Turli sohalardagi mijozlar uchun yaratgan eng yaxshi ishlarim
           </p>
         </div>
@@ -212,7 +212,7 @@ export function Projects() {
             {/* Results */}
             <div>
               <h4 className="font-semibold text-foreground mb-3">Natijalar:</h4>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {selectedProject.results.map((result) => (
                   <div
                     key={result}

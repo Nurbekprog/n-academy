@@ -333,18 +333,18 @@ export function Courses() {
     <section
       ref={sectionRef}
       id="courses"
-      className="relative py-24 lg:py-32 bg-[#0A1A2F]"
+      className="relative py-20 sm:py-24 lg:py-32 bg-[#0A1A2F]"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <span className="section-header inline-block text-sm font-semibold text-white/60 tracking-wider uppercase mb-4">
             Ta'lim
           </span>
           <h2 className="section-header text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             Online kurslar
           </h2>
-          <p className="section-header mt-4 text-lg text-white/60 max-w-2xl mx-auto">
+          <p className="section-header mt-4 text-base sm:text-lg text-white/60 max-w-2xl mx-auto">
             Professional darajadagi bilimlar va amaliy ko'nikmalarni o'rganing
           </p>
         </div>
@@ -359,10 +359,10 @@ export function Courses() {
               role="button"
               tabIndex={0}
               style={{ opacity: 0, transform: "translateY(50px) scale(0.95)" }}
-              className="course-card group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-6 lg:p-8 cursor-pointer hover:bg-white/10 hover:-translate-y-2"
+              className="course-card group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-5 sm:p-6 lg:p-8 cursor-pointer hover:bg-white/10 hover:-translate-y-2"
             >
               {/* Icon */}
-              <div className="w-14 h-14 rounded-2xl bg-white/10 text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 text-white flex items-center justify-center mb-5 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                 {course.icon}
               </div>
 
@@ -372,7 +372,7 @@ export function Courses() {
               </span>
 
               {/* Title */}
-              <h3 className="text-xl font-semibold text-white mb-3">
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">
                 {course.title}
               </h3>
 
@@ -382,7 +382,7 @@ export function Courses() {
               </p>
 
               {/* Stats */}
-              <div className="flex items-center gap-4 text-sm text-white/50 mb-6">
+              <div className="flex flex-wrap items-center gap-3 text-sm text-white/50 mb-6">
                 <span className="flex items-center gap-1.5">
                   <svg
                     width="16"
@@ -418,9 +418,9 @@ export function Courses() {
               </div>
 
               {/* Price & CTA */}
-              <div className="flex items-center justify-between pt-6 border-t border-white/10">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6 border-t border-white/10">
                 <div>
-                  <span className="text-2xl font-bold text-white">
+                  <span className="text-xl sm:text-2xl font-bold text-white">
                     {course.price}
                   </span>
                   <span className="text-white/50 text-sm ml-1">so'm</span>
@@ -457,15 +457,15 @@ export function Courses() {
         {selectedCourse && (
           <div className="space-y-6">
             {/* Course Header */}
-            <div className="flex items-start gap-4">
-              <div className="w-16 h-16 rounded-2xl bg-[#0A1A2F] text-white flex items-center justify-center flex-shrink-0">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#0A1A2F] text-white flex items-center justify-center flex-shrink-0">
                 {selectedCourse.icon}
               </div>
               <div>
                 <span className="inline-block px-3 py-1 text-xs font-medium bg-[#0A1A2F]/10 text-[#0A1A2F] rounded-full mb-2">
                   {selectedCourse.level}
                 </span>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
                   <span>{selectedCourse.duration}</span>
                   <span>•</span>
                   <span>{selectedCourse.lessons} dars</span>
@@ -485,7 +485,7 @@ export function Courses() {
               <h4 className="font-semibold text-foreground mb-3">
                 Kurs modullari:
               </h4>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {selectedCourse.modules.map((module, index) => (
                   <div
                     key={module}
@@ -532,10 +532,10 @@ export function Courses() {
             </div>
 
             {/* Price & CTA */}
-            <div className="flex items-center justify-between p-4 bg-secondary rounded-2xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 bg-secondary rounded-2xl">
               <div>
                 <span className="text-sm text-muted-foreground">Narxi:</span>
-                <div className="text-2xl font-bold text-foreground">
+                <div className="text-xl sm:text-2xl font-bold text-foreground">
                   {selectedCourse.price}{" "}
                   <span className="text-lg font-normal text-muted-foreground">
                     so'm
@@ -544,7 +544,7 @@ export function Courses() {
               </div>
               <button
                 type="button"
-                className="px-6 py-3 font-semibold text-white bg-[#0A1A2F] rounded-xl hover:bg-[#0A1A2F]/90 transition-colors"
+                className="w-full sm:w-auto px-6 py-3 font-semibold text-white bg-[#0A1A2F] rounded-xl hover:bg-[#0A1A2F]/90 transition-colors"
               >
                 Kursga yozilish
               </button>

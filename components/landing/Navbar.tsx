@@ -45,7 +45,7 @@ export function Navbar() {
           : "bg-transparent",
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a
@@ -56,10 +56,10 @@ export function Navbar() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <div className="w-9 h-9 text-white rounded-xl bg-[#0A1A2F] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 text-white rounded-xl bg-[#0A1A2F] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
               N
             </div>
-            <span className="font-semibold text-lg tracking-tight text-foreground">
+            <span className="font-semibold text-base sm:text-lg tracking-tight text-foreground">
               ACADEMY
             </span>
           </a>
@@ -133,7 +133,7 @@ export function Navbar() {
           mobileMenuOpen ? "max-h-80 border-t border-border" : "max-h-0",
         )}
       >
-        <div className="px-6 py-4 space-y-1">
+        <div className="px-4 sm:px-6 py-4 space-y-1">
           {navLinks.map((link) => (
             <a
               key={link.href}

@@ -71,7 +71,7 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4">
       {/* Overlay */}
       <div
         ref={overlayRef}
@@ -87,14 +87,14 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
       <div
         ref={modalRef}
         className={cn(
-          "relative w-full max-w-2xl max-h-[85vh] overflow-auto",
+          "relative w-full max-w-2xl max-h-[90vh] overflow-auto",
           "bg-white rounded-3xl shadow-2xl",
           "opacity-0",
         )}
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between p-6 bg-white/95 backdrop-blur-sm border-b border-border">
-          <h3 className="text-xl font-semibold text-foreground">
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 sm:p-6 bg-white/95 backdrop-blur-sm border-b border-border">
+          <h3 className="text-lg sm:text-xl font-semibold text-foreground">
             {title || "Details"}
           </h3>
           <button
@@ -120,7 +120,7 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
         </div>
 
         {/* Body */}
-        <div className="p-6">{children}</div>
+        <div className="p-4 sm:p-6">{children}</div>
       </div>
     </div>
   );

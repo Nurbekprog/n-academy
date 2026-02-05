@@ -159,10 +159,10 @@ export function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-24 lg:py-32 bg-white"
+      className="relative py-20 sm:py-24 lg:py-32 bg-white"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-center">
           {/* Left Column - Text */}
           <div>
             <span className="about-animate inline-block text-sm font-semibold text-[#0A1A2F] tracking-wider uppercase mb-4">
@@ -173,13 +173,13 @@ export function About() {
               <span className="text-[#0A1A2F]">zamonaviy usulda.</span> Noldan
               professionalgacha.
             </h2>
-            <p className="about-animate mt-6 text-lg text-muted-foreground leading-relaxed">
+            <p className="about-animate mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
               N ACADEMY — IT, dizayn, media va sun{"'"}iy intellekt yo{"'"}
               nalishlarida amaliy ta{"'"}lim beruvchi zamonaviy markaz. 5+
               yillik tajribaga ega mentorlar real loyihalar orqali o{"'"}
               quvchilarni noldan professionalgacha yetaklaydi.
             </p>
-            <p className="about-animate mt-4 text-lg text-muted-foreground leading-relaxed">
+            <p className="about-animate mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
               Instagramda 50,000+ auditoriya va 500+ o{"'"}quvchi bilan bizning
               loyihamizda sizning brendingiz ham o{"'"}sishi mumkin.
             </p>

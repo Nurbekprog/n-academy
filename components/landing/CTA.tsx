@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
 
 export function CTA() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     course: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     const loadAnimations = async () => {
-      const gsap = (await import("gsap")).default
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger")
+      const gsap = (await import("gsap")).default;
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
 
-      gsap.registerPlugin(ScrollTrigger)
+      gsap.registerPlugin(ScrollTrigger);
 
-      const section = sectionRef.current
-      if (!section) return
+      const section = sectionRef.current;
+      if (!section) return;
 
       gsap.fromTo(
         section.querySelectorAll(".cta-animate"),
@@ -38,38 +38,38 @@ export function CTA() {
             start: "top 80%",
             toggleActions: "play none none reverse",
           },
-        }
-      )
-    }
+        },
+      );
+    };
 
-    loadAnimations()
-  }, [])
+    loadAnimations();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
+    e.preventDefault();
+    setIsSubmitting(true);
+
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({ name: "", phone: "", course: "" })
-    
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    setFormData({ name: "", phone: "", course: "" });
+
     // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000)
-  }
+    setTimeout(() => setIsSubmitted(false), 5000);
+  };
 
   return (
     <section
       ref={sectionRef}
       id="contact"
-      className="relative py-24 lg:py-32 bg-white dot-pattern"
+      className="relative py-20 sm:py-24 lg:py-32 bg-white dot-pattern"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-24 items-center">
           {/* Left Column - Content */}
           <div>
             <span className="cta-animate inline-block text-sm font-semibold text-[#0A1A2F] tracking-wider uppercase mb-4">
@@ -77,16 +77,18 @@ export function CTA() {
             </span>
             <h2 className="cta-animate text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
               Kursga yoziling va{" "}
-              <span className="text-[#0A1A2F]">o'z sohangizdagi professional</span>{" "}
+              <span className="text-[#0A1A2F]">
+                o'z sohangizdagi professional
+              </span>{" "}
               bo'ling
             </h2>
-            <p className="cta-animate mt-6 text-lg text-muted-foreground leading-relaxed">
+            <p className="cta-animate mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
               Hoziroq ro'yxatdan o'ting va maxsus chegirmalardan foydalaning.
               Sizning muvaffaqiyatingiz bizning maqsadimiz.
             </p>
 
             {/* Benefits */}
-            <div className="cta-animate mt-8 space-y-4">
+            <div className="cta-animate mt-6 sm:mt-8 space-y-4">
               {[
                 "Professional mentorlik dasturi",
                 "Cheksiz video darslar kirish",
@@ -108,7 +110,9 @@ export function CTA() {
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
-                  <span className="text-foreground">{benefit}</span>
+                  <span className="text-sm sm:text-base text-foreground">
+                    {benefit}
+                  </span>
                 </div>
               ))}
             </div>
@@ -116,7 +120,7 @@ export function CTA() {
 
           {/* Right Column - Form */}
           <div className="cta-animate">
-            <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl shadow-black/5 border border-border">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl shadow-black/5 border border-border">
               {isSubmitted ? (
                 <div className="text-center py-8">
                   <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
@@ -142,7 +146,7 @@ export function CTA() {
                 </div>
               ) : (
                 <>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
                     Bepul konsultatsiya
                   </h3>
                   <p className="text-muted-foreground mb-6">
@@ -263,5 +267,5 @@ export function CTA() {
         </div>
       </div>
     </section>
-  )
+  );
 }

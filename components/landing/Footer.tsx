@@ -108,9 +108,12 @@ export function Footer() {
   };
 
   return (
-    <footer ref={footerRef} className="relative py-16 lg:py-20 bg-[#0A1A2F]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer
+      ref={footerRef}
+      className="relative py-14 sm:py-16 lg:py-20 bg-[#0A1A2F]"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="footer-animate flex items-center gap-2 mb-4">
@@ -119,7 +122,7 @@ export function Footer() {
               </div>
               <span className="font-semibold text-xl text-white">ACADEMY</span>
             </div>
-            <p className="footer-animate text-white/60 max-w-md leading-relaxed">
+            <p className="footer-animate text-white/60 max-w-md leading-relaxed text-sm sm:text-base">
               Professional grafik dizayner va SMM mutaxassisi. Brendingizni
               yangi darajaga olib chiqishga yordam beraman.
             </p>
@@ -231,12 +234,14 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="footer-animate mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/40 text-sm">
+        <div className="footer-animate mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+          <p className="text-white/40 text-xs sm:text-sm">
             © {new Date().getFullYear()} N ACADEMY. Barcha huquqlar
             himoyalangan.
           </p>
-          <p className="text-white/40 text-sm">Made with passion in Tashkent</p>
+          <p className="text-white/40 text-xs sm:text-sm">
+            Made with passion in Tashkent
+          </p>
         </div>
       </div>
     </footer>
