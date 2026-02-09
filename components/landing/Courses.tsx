@@ -2,11 +2,11 @@
 
 import React from "react";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Modal } from "./Modal";
-import { features } from "process";
+import { getCourses, CourseApi } from "@/lib/api";
 
-const courses = [
+const fallbackCourses = [
   {
     id: 1,
     title: "IT dasturlash asoslari",
@@ -256,16 +256,14 @@ const courses = [
   },
 ];
 
-interface Course {
-  id: number;
-  title: string;
+interface Course extends CourseApi {
+  icon: React.ReactNode;
   description: string;
   price: string;
   duration: string;
   lessons: number;
   students: number;
   level: string;
-  icon: React.ReactNode;
   fullDescription: string;
   modules: string[];
   features: string[];
@@ -274,6 +272,46 @@ interface Course {
 export function Courses() {
   const sectionRef = useRef<HTMLElement>(null);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const [courses, setCourses] = useState<Course[]>(fallbackCourses);
+  const [error, setError] = useState("");
+
+  const icons = useMemo(() => fallbackCourses.map((course) => course.icon), []);
+
+  useEffect(() => {
+    let isMounted = true;
+    const loadCourses = async () => {
+      try {
+        const data = await getCourses();
+        if (!isMounted || data.length === 0) return;
+        const normalized = data.map((course, index) => ({
+          id: course.id,
+          title: course.title,
+          description: course.description || "",
+          price: course.price || "",
+          duration: course.duration || "",
+          lessons: course.lessons || 0,
+          students: course.students || 0,
+          level: course.level || "",
+          icon: icons[index % icons.length],
+          fullDescription: course.fullDescription || "",
+          modules: course.modules || [],
+          features: course.features || [],
+        }));
+        setCourses(normalized);
+      } catch (err) {
+        const message =
+          err instanceof Error ? err.message : "Ma'lumot yuklanmadi";
+        setError(message);
+      }
+    };
+
+    loadCourses();
+    const interval = setInterval(loadCourses, 15000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, [icons]);
 
   useEffect(() => {
     const loadAnimations = async () => {
@@ -446,6 +484,9 @@ export function Courses() {
             </div>
           ))}
         </div>
+        {error ? (
+          <p className="mt-6 text-sm text-muted-foreground">{error}</p>
+        ) : null}
       </div>
 
       {/* Modal */}

@@ -3,6 +3,7 @@
 import React from "react";
 
 import { useEffect, useRef, useState } from "react";
+import { getCourses } from "@/lib/api";
 
 export function CTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -13,6 +14,7 @@ export function CTA() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [courses, setCourses] = useState<{ id: number; title: string }[]>([]);
 
   useEffect(() => {
     const loadAnimations = async () => {
@@ -43,6 +45,25 @@ export function CTA() {
     };
 
     loadAnimations();
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    const loadCourses = async () => {
+      try {
+        const data = await getCourses();
+        if (!isMounted) return;
+        setCourses(
+          data.map((course) => ({ id: course.id, title: course.title })),
+        );
+      } catch {
+        // ignore, fallback to empty
+      }
+    };
+    loadCourses();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -214,15 +235,11 @@ export function CTA() {
                         className="w-full px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground focus:outline-none focus:ring-2 focus:ring-[#0A1A2F]/20 focus:border-[#0A1A2F] transition-all"
                       >
                         <option value="">Kursni tanlang</option>
-                        <option value="instagram-smm">
-                          Instagram SMM Professional
-                        </option>
-                        <option value="personal-branding">
-                          Personal Branding Mastery
-                        </option>
-                        <option value="graphic-design">
-                          Grafik Dizayn Fundamentals
-                        </option>
+                        {courses.map((course) => (
+                          <option key={course.id} value={String(course.id)}>
+                            {course.title}
+                          </option>
+                        ))}
                       </select>
                     </div>
 

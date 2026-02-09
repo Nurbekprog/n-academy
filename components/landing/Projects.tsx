@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Card } from "./Card";
 import { Modal } from "./Modal";
+import { getProjects, ProjectApi } from "@/lib/api";
 
-const projects = [
+const fallbackProjects = [
   {
     id: 1,
     title: "Nexcent ",
@@ -99,9 +100,7 @@ const projects = [
   },
 ];
 
-interface Project {
-  id: number;
-  title: string;
+interface Project extends ProjectApi {
   description: string;
   category: string;
   image: string;
@@ -112,6 +111,39 @@ interface Project {
 export function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [projects, setProjects] = useState<Project[]>(fallbackProjects);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    let isMounted = true;
+    const loadProjects = async () => {
+      try {
+        const data = await getProjects();
+        if (!isMounted || data.length === 0) return;
+        const normalized = data.map((project) => ({
+          id: project.id,
+          title: project.title,
+          description: project.description || "",
+          category: project.category || "",
+          image: project.image || "",
+          fullDescription: project.fullDescription || "",
+          results: project.results || [],
+        }));
+        setProjects(normalized);
+      } catch (err) {
+        const message =
+          err instanceof Error ? err.message : "Ma'lumot yuklanmadi";
+        setError(message);
+      }
+    };
+
+    loadProjects();
+    const interval = setInterval(loadProjects, 15000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
 
   useEffect(() => {
     const loadAnimations = async () => {
@@ -180,6 +212,9 @@ export function Projects() {
             />
           ))}
         </div>
+        {error ? (
+          <p className="mt-6 text-sm text-muted-foreground">{error}</p>
+        ) : null}
       </div>
 
       {/* Modal */}
