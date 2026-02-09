@@ -274,6 +274,7 @@ export function Courses() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [courses, setCourses] = useState<Course[]>(fallbackCourses);
   const [error, setError] = useState("");
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   const icons = useMemo(() => fallbackCourses.map((course) => course.icon), []);
 
@@ -352,6 +353,7 @@ export function Courses() {
                 card.style.opacity = "1";
                 card.style.transform = "translateY(0) scale(1)";
               });
+              setHasAnimated(true);
               observer.disconnect();
             }
           });
@@ -396,7 +398,11 @@ export function Courses() {
               onKeyDown={(e) => e.key === "Enter" && setSelectedCourse(course)}
               role="button"
               tabIndex={0}
-              style={{ opacity: 0, transform: "translateY(50px) scale(0.95)" }}
+              style={
+                hasAnimated
+                  ? undefined
+                  : { opacity: 0, transform: "translateY(50px) scale(0.95)" }
+              }
               className="course-card group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-5 sm:p-6 lg:p-8 cursor-pointer hover:bg-white/10 hover:-translate-y-2"
             >
               {/* Icon */}
