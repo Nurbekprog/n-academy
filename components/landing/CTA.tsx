@@ -25,23 +25,45 @@ export function CTA() {
 
       const section = sectionRef.current;
       if (!section) return;
+      const targets = section.querySelectorAll(".cta-animate");
+      if (targets.length === 0) return;
 
-      gsap.fromTo(
-        section.querySelectorAll(".cta-animate"),
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      if (prefersReducedMotion) {
+        gsap.set(targets, { clearProps: "all" });
+        return;
+      }
+
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      if (isMobile) {
+        gsap.fromTo(
+          targets,
+          { opacity: 0, y: 16 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.35,
+            stagger: 0.04,
+            ease: "power2.out",
           },
+        );
+        return;
+      }
+
+      gsap.fromTo(targets, { opacity: 0, y: 32 }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.65,
+        stagger: 0.08,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 88%",
+          once: true,
         },
-      );
+      });
     };
 
     loadAnimations();

@@ -74,23 +74,45 @@ export function Footer() {
 
       const footer = footerRef.current;
       if (!footer) return;
+      const targets = footer.querySelectorAll(".footer-animate");
+      if (targets.length === 0) return;
 
-      gsap.fromTo(
-        footer.querySelectorAll(".footer-animate"),
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: footer,
-            start: "top 95%",
-            toggleActions: "play none none reverse",
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      if (prefersReducedMotion) {
+        gsap.set(targets, { clearProps: "all" });
+        return;
+      }
+
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      if (isMobile) {
+        gsap.fromTo(
+          targets,
+          { opacity: 0, y: 12 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            stagger: 0.03,
+            ease: "power2.out",
           },
+        );
+        return;
+      }
+
+      gsap.fromTo(targets, { opacity: 0, y: 22 }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: footer,
+          start: "top 90%",
+          once: true,
         },
-      );
+      });
     };
 
     loadAnimations();
