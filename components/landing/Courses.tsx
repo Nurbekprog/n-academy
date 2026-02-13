@@ -302,6 +302,12 @@ export function Courses() {
       } catch (err) {
         const message =
           err instanceof Error ? err.message : "Ma'lumot yuklanmadi";
+        if (
+          message.toLowerCase().includes("could not validate credentials") ||
+          message.toLowerCase().includes("public registration is disabled")
+        ) {
+          return;
+        }
         setError(message);
       }
     };
