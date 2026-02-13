@@ -4,14 +4,24 @@ import React from "react";
 
 import { useEffect, useRef, useState } from "react";
 import { getCourses } from "@/lib/api";
+import {
+  contactSchema,
+  normalizeUzPhone,
+  type ContactFormInput,
+} from "@/lib/validations/contact";
+
+type ContactErrors = Partial<Record<keyof ContactFormInput, string>> & {
+  form?: string;
+};
 
 export function CTA() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormInput>({
     name: "",
     phone: "",
     course: "",
   });
+  const [errors, setErrors] = useState<ContactErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [courses, setCourses] = useState<{ id: number; title: string }[]>([]);
@@ -88,19 +98,72 @@ export function CTA() {
     };
   }, []);
 
+  const setField = (field: keyof ContactFormInput, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    setErrors((prev) => ({ ...prev, [field]: undefined, form: undefined }));
+  };
+
+  const validateSingleField = (field: keyof ContactFormInput) => {
+    const parsed = contactSchema.safeParse(formData);
+    if (parsed.success) {
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
+      return;
+    }
+    const issue = parsed.error.issues.find((item) => item.path[0] === field);
+    setErrors((prev) => ({ ...prev, [field]: issue?.message }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const parsed = contactSchema.safeParse(formData);
+    if (!parsed.success) {
+      const fieldErrors: ContactErrors = {};
+      parsed.error.issues.forEach((issue) => {
+        const key = issue.path[0];
+        if (typeof key === "string" && !fieldErrors[key as keyof ContactFormInput]) {
+          fieldErrors[key as keyof ContactFormInput] = issue.message;
+        }
+      });
+      setErrors(fieldErrors);
+      return;
+    }
+
     setIsSubmitting(true);
+    setErrors({});
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("/api/contact-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(parsed.data),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: "", phone: "", course: "" });
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as
+          | { detail?: string; errors?: ContactErrors }
+          | null;
+        if (data?.errors) {
+          setErrors((prev) => ({ ...prev, ...data.errors }));
+        }
+        throw new Error(
+          data?.detail || "Forma yuborilmadi. Iltimos, qayta urinib ko'ring.",
+        );
+      }
 
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+      setIsSubmitted(true);
+      setFormData({ name: "", phone: "", course: "" });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      setErrors((prev) => ({
+        ...prev,
+        form:
+          error instanceof Error
+            ? error.message
+            : "Noma'lum xatolik yuz berdi",
+      }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -208,14 +271,23 @@ export function CTA() {
                       <input
                         type="text"
                         id="name"
+                        name="name"
                         value={formData.name}
                         onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
+                          setField("name", e.target.value)
                         }
+                        onBlur={() => validateSingleField("name")}
                         required
+                        minLength={3}
+                        maxLength={80}
+                        autoComplete="name"
+                        aria-invalid={Boolean(errors.name)}
                         className="w-full px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#0A1A2F]/20 focus:border-[#0A1A2F] transition-all"
                         placeholder="Ismingizni kiriting"
                       />
+                      {errors.name ? (
+                        <p className="mt-2 text-sm text-red-500">{errors.name}</p>
+                      ) : null}
                     </div>
 
                     {/* Phone Input */}
@@ -229,14 +301,23 @@ export function CTA() {
                       <input
                         type="tel"
                         id="phone"
+                        name="phone"
                         value={formData.phone}
                         onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
+                          setField("phone", normalizeUzPhone(e.target.value))
                         }
+                        onBlur={() => validateSingleField("phone")}
                         required
+                        inputMode="numeric"
+                        autoComplete="tel"
+                        aria-invalid={Boolean(errors.phone)}
+                        pattern="^\\+998\\s\\d{2}\\s\\d{3}\\s\\d{2}\\s\\d{2}$"
                         className="w-full px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#0A1A2F]/20 focus:border-[#0A1A2F] transition-all"
                         placeholder="+998 90 123 45 67"
                       />
+                      {errors.phone ? (
+                        <p className="mt-2 text-sm text-red-500">{errors.phone}</p>
+                      ) : null}
                     </div>
 
                     {/* Course Select */}
@@ -249,11 +330,14 @@ export function CTA() {
                       </label>
                       <select
                         id="course"
+                        name="course"
                         value={formData.course}
                         onChange={(e) =>
-                          setFormData({ ...formData, course: e.target.value })
+                          setField("course", e.target.value)
                         }
+                        onBlur={() => validateSingleField("course")}
                         required
+                        aria-invalid={Boolean(errors.course)}
                         className="w-full px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground focus:outline-none focus:ring-2 focus:ring-[#0A1A2F]/20 focus:border-[#0A1A2F] transition-all"
                       >
                         <option value="">Kursni tanlang</option>
@@ -263,7 +347,16 @@ export function CTA() {
                           </option>
                         ))}
                       </select>
+                      {errors.course ? (
+                        <p className="mt-2 text-sm text-red-500">{errors.course}</p>
+                      ) : null}
                     </div>
+
+                    {errors.form ? (
+                      <p className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
+                        {errors.form}
+                      </p>
+                    ) : null}
 
                     {/* Submit Button */}
                     <button
