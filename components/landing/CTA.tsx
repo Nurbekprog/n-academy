@@ -311,7 +311,7 @@ export function CTA() {
                         inputMode="numeric"
                         autoComplete="tel"
                         aria-invalid={Boolean(errors.phone)}
-                        pattern="^\\+998\\s\\d{2}\\s\\d{3}\\s\\d{2}\\s\\d{2}$"
+                        maxLength={17}
                         className="w-full px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#0A1A2F]/20 focus:border-[#0A1A2F] transition-all"
                         placeholder="+998 90 123 45 67"
                       />
